@@ -4,11 +4,14 @@ angular.module('schemaForm').config(
 
         var selectWithDefault = function(name, schema, options) {
           if (schema.type === 'string' && schema['enum']) {
-            var f = stdFormObj(name, schema, options);
+            var f = schemaFormProvider.stdFormObj(name, schema, options);
             f.key  = options.path;
             f.type = 'selectWithDefault';
             if (!f.titleMap) {
-              f.titleMap = enumToTitleMap(schema['enum']);
+				f.titleMap = [];
+				schema['enum'].forEach(function(name) {
+					f.titleMap.push({name: name, value: name});
+				});
             }
             options.lookup[sfPathProvider.stringify(options.path)] = f;
             return f;

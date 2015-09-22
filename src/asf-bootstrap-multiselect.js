@@ -5,11 +5,14 @@ angular.module('schemaForm').config(
         var multiselect = function(name, schema, options) {
           if (schema.type === 'string' && schema.multiple === 'multiple' &&
               schema.items && schema.items['enum']) {
-            var f = stdFormObj(name, schema, options);
+            var f = schemaFormProvider.stdFormObj(name, schema, options);
             f.key = options.path;
             f.type = 'multiselect';
             if (!f.titleMap) {
-              f.titleMap = enumToTitleMap(schema.items['enum']);
+                f.titleMap = [];
+				schema.items['enum'].forEach(function(name) {
+					f.titleMap.push({name: name, value: name});
+				});
             }
             options.lookup[sfPathProvider.stringify(options.path)] = f;
             return f;
