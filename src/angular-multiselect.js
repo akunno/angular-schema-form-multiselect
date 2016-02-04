@@ -3,7 +3,7 @@ angular.module('schemaForm').directive('sfMultiple', ['$http',
 
     var defaultMultiselectConfig = {
       maxHeight: 305,
-      enableCaseInsensitiveFiltering: true,
+      enableCaseInsensitiveFiltering: false,
       inheritClass: false,
       nSelectedText: 'selected.',
       templates: {
@@ -20,6 +20,7 @@ angular.module('schemaForm').directive('sfMultiple', ['$http',
         ngModel: '='
       },
       link: function(scope, element, attrs) {
+        console.log(element);
         if (!element.multiselect) {
           console.warn('bootstrap-multiselect not present.');
           return;
@@ -32,8 +33,8 @@ angular.module('schemaForm').directive('sfMultiple', ['$http',
           multiselectConfig = defaultMultiselectConfig;
         }
 
-        //console.log(defaultMultiselectConfig);
-        //console.log(multiselectConfig);
+        console.log(defaultMultiselectConfig);
+        console.log(multiselectConfig);
 
         scope.$watch(attrs.ngIf, function() {
           console.log('init multiselect');
