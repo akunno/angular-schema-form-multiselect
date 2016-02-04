@@ -54,9 +54,6 @@ angular.module('app', ['schemaForm'])
       {
         "key": "stuffyoulike",
         "type": "multiselect",
-        "options": {
-          "multiple": "true"
-        },
         "titleMap": [
           { "name": "Option 1 Name", "value": "Option 1 Value" },
           { "name": "Option 2 Name", "value": "Option 2 Value" },

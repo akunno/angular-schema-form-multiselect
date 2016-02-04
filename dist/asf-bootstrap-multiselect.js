@@ -21,7 +21,6 @@ angular.module('schemaForm').directive('sfMultiple', ['$http',
         ngModel: '='
       },
       link: function(scope, element, attrs) {
-        console.log(element);
         if (!element.multiselect) {
           console.warn('bootstrap-multiselect not present.');
           return;
